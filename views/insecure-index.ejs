@@ -1,0 +1,33 @@
+<!-- views/insecure-index.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Insecure Blog</title>
+</head>
+<body>
+  <h1>Insecure Blog</h1>
+  <ul>
+    <% posts.forEach(post => { %>
+      <!-- Vulnerability: Reflected XSS - User input is directly rendered in the template -->
+      <li><%= post.title %> - <%= post.content %></li>
+    <% }); %>
+  </ul>
+
+  <!-- Add a link to the submit page -->
+  <a href="/submit">Submit a New Post</a>
+
+  <!-- Display submitted blogs -->
+  <% if (submittedPosts && submittedPosts.length > 0) { %>
+    <h2>Submitted Blogs</h2>
+    <ul>
+      <% submittedPosts.forEach(post => { %>
+        <!-- Vulnerability: Reflected XSS - User input is directly rendered in the template -->
+        <li><%= post.title %> - <%= post.content %></li>
+      <% }); %>
+    </ul>
+  <% } %>
+</body>
+</html>
+
