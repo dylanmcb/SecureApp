@@ -1,0 +1,23 @@
+<!-- views/secure-index.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secure Blog</title>
+</head>
+<body>
+  <h1>Secure Blog</h1>
+
+  <!-- Display Submitted Posts -->
+  <h2>Submitted Posts</h2>
+  <ul>
+    <% posts.forEach(post => { %>
+      <li><%- post.title %>: <%- post.content %></li>
+    <% }); %>
+  </ul>
+
+  <!-- Link to Submit a New Post -->
+  <a href="/submit">Submit a New Post</a>
+</body>
+</html>

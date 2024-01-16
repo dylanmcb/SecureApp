@@ -1,0 +1,28 @@
+<!-- submit.ejs (views) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Submit Post</title>
+</head>
+<body>
+  <h1>Submit a Post</h1>
+
+  <!-- Form for submitting a new blog post with CSRF protection -->
+  <form action="/submit" method="post">
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title" required>
+
+    <label for="content">Content:</label>
+    <textarea id="content" name="content" required></textarea>
+
+    <!-- CSRF Token -->
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <p><a href="/">Back to Home</a></p>
+</body>
+</html>
